@@ -1,5 +1,3 @@
-package GroupOfMike;
-
 
 /**
  * The Fraction class represents a fraction with numerator and denominator attributes.
@@ -9,7 +7,7 @@ package GroupOfMike;
  * reducing a fraction to its simplest form. This class also includes methods
  * to represent a fraction as a String and as a double.
  */
-public class Fraction {
+public class Fraction2 {
     private int numerator;
     private int denominator;
 
