@@ -1,12 +1,10 @@
-package GroupOfMike;
-
 
 import java.util.*;
 
 /**
  * This main class allows a user perform basic operations on fractions through a command-line program.
  */
-public class FractionArithmetic {
+public class FractionArithmetic2 {
     static Scanner keyboard = new Scanner(System.in);
 
     public static void main(String[] args) {
