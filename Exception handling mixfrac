@@ -1,0 +1,25 @@
+public class MixFraction {
+    private int wholeNumber;
+    private Fraction fraction;
+
+    // Constructor for MixFraction class
+    public MixFraction(int wholeNumber, Fraction fraction) throws InvalidMixFractionException {
+        // Check if the denominator of the fraction part is zero
+        if (fraction.getDenominator() == 0) {
+            // Throw a custom exception if the denominator is zero
+            throw new InvalidMixFractionException("Denominator of fraction part cannot be zero");
+        }
+        this.wholeNumber = wholeNumber;
+        this.fraction = fraction;
+    }
+
+
+    // Custom exception class for handling invalid MixFraction
+    public static class InvalidMixFractionException extends Exception {
+        // Constructor for the custom exception class
+        public InvalidMixFractionException(String message) {
+            // Call the Exception class constructor with the error message
+            super(message);
+        }
+    }
+}
