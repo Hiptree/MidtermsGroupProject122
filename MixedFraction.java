@@ -3,9 +3,9 @@ package Fractionaaa;
 public class MixedFraction extends Fraction {
     private int wholeNumber; //instance variable for the whole number
 
-    public MixedFraction(int wholeNumber, int numerator, int denominator){
+    public MixedFraction(int whole, int numerator, int denominator){
         super(numerator, denominator);
-        this.wholeNumber = wholeNumber;
+        this.wholeNumber = whole;
     }
 
     // Setter for wholeNumber
