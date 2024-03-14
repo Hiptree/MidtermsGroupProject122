@@ -10,12 +10,12 @@ public class MixedFraction extends Fraction {
      * the mixed fraction 3 1/2
      */
     public MixedFraction(int whole, Fraction fraction){
-        super(fraction.getNumerator(), fraction.getDenominator());
+        super(fraction.getNumerator(), fraction.getDenominator());//initialize the Fraction part of the MixedFraction object
         this.wholeNumber=whole;
     }
     //
     public MixedFraction(int whole, int numerator, int denominator){
-        super(numerator, denominator);
+        super(numerator, denominator);//initialize the Fraction part of the MixedFraction object
         this.wholeNumber = whole;
     }
 
@@ -25,7 +25,7 @@ public class MixedFraction extends Fraction {
      * 0 1/2 which is just 1/2
      */
     public MixedFraction(Fraction fraction){
-        super(fraction.getNumerator(), fraction.getDenominator());
+        super(fraction.getNumerator(), fraction.getDenominator());//initialize the Fraction part of the MixedFraction object
         this.wholeNumber = 0;
     }
 
