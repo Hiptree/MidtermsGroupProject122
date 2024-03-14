@@ -2,10 +2,31 @@ package Fractionaaa;
 
 public class MixedFraction extends Fraction {
     private int wholeNumber; //instance variable for the whole number
-
+    
+    /**
+     * This constructor creates a MixedFraction object with a whole number and a Fraction object
+     * for example, if you want to make a mixed fraction with a whole number and a fraction lets
+     * say you have wholenumber = 3 nad   the fraction =1/2 this constructor will make
+     * the mixed fraction 3 1/2
+     */
+    public MixedFraction(int whole, Fraction fraction){
+        super(fraction.getNumerator(), fraction.getDenominator());
+        this.wholeNumber=whole;
+    }
+    //
     public MixedFraction(int whole, int numerator, int denominator){
         super(numerator, denominator);
         this.wholeNumber = whole;
+    }
+
+    /**
+     * This constructor creates a MixedFraction object with just a fraction object
+     * Example: if you have the fraction 2/4, this constructor will make the mixed fraction
+     * 0 1/2 which is just 1/2
+     */
+    public MixedFraction(Fraction fraction){
+        super(fraction.getNumerator(), fraction.getDenominator());
+        this.wholeNumber = 0;
     }
 
     // Setter for wholeNumber
