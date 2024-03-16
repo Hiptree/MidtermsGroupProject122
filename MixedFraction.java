@@ -92,5 +92,31 @@ public class MixedFraction extends Fraction {
         }
     }
 
+    /**
+     * Adds this mixed fraction to another mixed fraction and
+     * returns the sum as a new mixed fraction.
+     */
+    public MixedFraction add(MixedFraction mixedFrac2) {
+        int sumWhole = wholeNumber + mixedFrac2.getWhole();
+        Fraction fraction1 = this.getFractionPart();
+        Fraction fraction2 = mixedFrac2.getFractionPart();
 
+        Fraction sumFrac = fraction1.add(fraction2);
+
+        return new MixedFraction(sumWhole, sumFrac.reduce());
+    }
+
+    /**
+     * Subtracts another mixed fraction from this mixed fraction 
+     * and returns the difference as a new mixed fraction.
+     */
+    public MixedFraction subtract(MixedFraction mixedFrac2) {
+        int diffWhole = wholeNumber - mixedFrac2.getWhole();
+        Fraction fraction1 = this.getFractionPart();
+        Fraction fraction2 = mixedFrac2.getFractionPart();
+
+        Fraction diffFrac = fraction1.subtract(fraction2);
+
+        return new MixedFraction(diffWhole, diffFrac.reduce());
+    }
 }
