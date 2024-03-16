@@ -91,39 +91,88 @@ public class FractionArithmetic {
      * inputs something valid
      *
      * */
-    private Fraction getFractionFromUser() {
+   private Fraction getFractionFromUser() {
         Scanner scanner = new Scanner(System.in);
 
-        int numerator, denominator;
+        int wholeNumber = 0;
+        int numerator = 0;
+        int denominator = 1;
+        
+        //prompt with an option for the user to input a mixed fraction
+       while (true) {
+            try {
+                // Ask the user if they want to input a mixed fraction
+                System.out.print("Do you want to input a mixed fraction? (yes/no): ");
+                String choice = scanner.next().toLowerCase();
 
-        //numerator
+                // Validate user input
+                if (!choice.equals("yes") && !choice.equals("no")) {
+                    throw new InputMismatchException(); // Throw exception for invalid choice
+                }
+
+                // prompt for the whole number part if user wants to input a mixed fraction,
+                if (choice.equals("yes")) {
+                    // Input for whole number
+                    while (true) {
+                        try {
+                            System.out.print("Enter the whole number part: ");
+                            wholeNumber = scanner.nextInt();
+                            break; // Exit the loop if input is valid
+                        } catch (InputMismatchException e) {
+                            System.out.println("Invalid input for whole number. Please enter a valid numeric value.");
+                            scanner.nextLine(); // Clear the invalid input
+                        }
+                    }
+                }
+                break; // Exits the loop if choice input is valid
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+                scanner.nextLine(); // Clears the invalid input
+            }
+        }
+
+        // Input for numerator
         while (true) {
             try {
                 System.out.print("Enter numerator: ");
                 numerator = scanner.nextInt();
-                break; // Exit the loop if input is valid
+                break; // Exits the loop if the input is valid
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input for numerator. Please enter a valid numeric value.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine(); // Clears the invalid input
             }
         }
-        //denominator
+
+        // Input for denominator
         while (true) {
             try {
                 System.out.print("Enter denominator: ");
                 denominator = scanner.nextInt();
                 if (denominator != 0) {
-                    break; // Exit the loop if input is valid and not equal to zero
+                    break; // Exits the loop if the input is valid and not equal to zero
                 } else {
                     System.out.println("Denominator cannot be zero. Please enter a non-zero value.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input for denominator. Please enter a valid numeric value.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine(); // Clears the invalid input
             }
         }
-        return new Fraction(numerator, denominator);
-    }//end of getFractionFromUser
+
+        //converts a mixed fraction into regular fraction before returning the value
+        try {
+            if (wholeNumber != 0) {
+                return new Fraction(wholeNumber * denominator + numerator, denominator);
+            } else {
+                return new Fraction(numerator, denominator);
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage()); // Handle division by zero
+            return null;
+        }
+
+    }//end of getFractionFromUser method
+    
     private void fractionOperation(int choice, Fraction fraction1, Fraction fraction2){
         switch (choice) {
             case 1 -> {
