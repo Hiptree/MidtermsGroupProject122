@@ -22,154 +22,145 @@ public class FractionArithmetic {
         }
     }//end of main method
     
-     /**
-     * The run method runs the program and provides a menu for the user to select the operations they want.
-     * It also handles input exceptions and loops the part of the program's prompt where 
-     the exception occurred until a valid input has been entered.
-     */
-    public void run() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Fraction Arithmetic"); //introduction message prompt
-        while (true) {
-            System.out.println("Press Enter to continue: ");
-            try {
-                System.in.read();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+ /**
+ * Runs the Fraction Arithmetic program, allowing the user to perform operations on fractions.
+ * This method displays a menu, prompts the user to choose whether to use mixed fractions or not,
+ * and handles the user input for performing fraction operations.
+ */
+public void run() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Welcome to Fraction Arithmetic");
 
-            //operation selection menu
-            System.out.println("""
-                ———MENU—————————————————————
-                   [1] Add fractions
-                   [2] Subtract fractions
-                   [3] Multiply fractions
-                   [4] Divide fractions
-                   [5] Reduce a fraction
-                   [6] Quit
-                ————————————————————————————""");
-             System.out.print("Enter here: ");//This is where the user enters what operation they wish to perform.
+    while (true) {
+        // Prompt the user to choose whether to use mixed fractions or not
+        System.out.print("Do you want to perform operations on mixed fractions? (yes/no): ");
+        String choiceMixed = scanner.next().toLowerCase();
+        boolean useMixedFractions = choiceMixed.equals("yes");
 
-
-            /*
-             * The block of code below initiates the operation choices.
-             * it also loops the prompt if the user inputs something that is not among
-             * the options.
-             *
-             * */
-            int choice;
-            try {
-                choice = scanner.nextInt();
-                System.out.println();
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input for choice. Please enter a number.");
-                scanner.next(); // Clear the invalid input
-                continue;
-            } if (choice < 1 || choice > 6) {//triggers if the user inputs an invalid option
-                System.out.println("Enter a valid number!");
-                System.out.print("Enter Operation Here: ");
-                scanner.next(); // Clear the invalid input
-                continue;
-
-            }
-            else if (choice == 6) {//choice 6 exits the program
-                System.out.println("Exiting program. Goodbye!");
-                System.exit(0);
-                break;
-            } else if (choice == 5){ // choice 5 will reduce a fraction so it only needs 1 input of fraction.
-                System.out.println("Enter the fraction you want to simplify: ");
-                Fraction fraction = getFractionFromUser();
-                System.out.println("Simplified Form: " +fraction.reduce());
-                System.out.println();
-                run();
-            }
-            //input for fraction
-            System.out.println("Enter the first fraction:");
-            Fraction fraction1 = getFractionFromUser();
-            System.out.println();
-            System.out.println("Enter the second fraction:");
-            Fraction fraction2 = getFractionFromUser();
-            System.out.println();
-            fractionOperation(choice, fraction1, fraction2);
-            System.out.println("---------------------------------");
+        // Prompt the user to press Enter to continue
+        System.out.println("Press Enter to continue: ");
+        try {
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-    }//end of run
+        // Display the menu for fraction operations
+        System.out.println("""
+            ———MENU—————————————————————
+               [1] Add fractions
+               [2] Subtract fractions
+               [3] Multiply fractions
+               [4] Divide fractions
+               [5] Reduce a fraction
+               [6] Quit
+            ————————————————————————————""");
+        System.out.print("Enter here: ");
 
-  /* The getFractionFromUser gets the values for the fractions needed for the selected operation via user input.
-  * It first prompts the user if they wish to enter a mixed fraction or a regular fraction before they get to input.
-  * Like the run method, it also validates if the input for the whole number, denominator, or numerator
-  * are valid and loops the part of the prompt where an invalid input was made.
-  */
-   private Fraction getFractionFromUser() {
+        int choice = 0;
+        try {
+            choice = scanner.nextInt();
+            System.out.println();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input for choice. Please enter a number.");
+            scanner.next(); // Clear the invalid input
+            continue;
+        }
+
+        // Check if the choice is valid
+        if (choice < 1 || choice > 6) {
+            System.out.println("Enter a valid number!");
+            continue;
+        } else if (choice == 6) {
+            // Exit the program if the user chooses to quit
+            System.out.println("Exiting program. Goodbye!");
+            System.exit(0);
+        } else if (choice == 5) {
+            // Perform fraction reduction if the user chooses option 5
+            System.out.println("Enter the fraction you want to simplify: ");
+            Fraction fraction = getFractionFromUser(useMixedFractions);
+            System.out.println("Simplified Form: " + fraction.reduce());
+            System.out.println();
+            continue;
+        }
+
+        // Prompt the user to enter the first fraction
+        System.out.println("Enter the first fraction:");
+        Fraction fraction1 = getFractionFromUser(useMixedFractions);
+        System.out.println();
+
+        // Prompt the user to enter the second fraction
+        System.out.println("Enter the second fraction:");
+        Fraction fraction2 = getFractionFromUser(useMixedFractions);
+        System.out.println();
+
+        // Perform the selected fraction operation
+        fractionOperation(choice, fraction1, fraction2);
+        System.out.println("---------------------------------");
+    }
+}//end of run method
+
+
+   /**
+     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction, based on value of the boolean useMixedFractions on the run method
+     * If useMixedFractions is true, the method prompts the user to input a mixed fraction.
+     * If useMixedFractions is false, the method prompts the user to input a regular fraction.
+     *
+     * @param useMixedFractions indicates whether to prompt for a mixed fraction or a regular fraction 
+     * @return the fraction that is inputted is returned
+     *Like the run method, it also validates if the input for the whole number, denominator, or numerator
+     * are valid and loops the part of the prompt where an invalid input was made.
+    */
+    private Fraction getFractionFromUser(boolean useMixedFractions) {
         Scanner scanner = new Scanner(System.in);
 
         int wholeNumber = 0;
-        int numerator = 0;
-        int denominator = 1;
-        
-        //prompt with an option for the user to input a mixed fraction
-       while (true) {
-            try {
-                // Ask the user if they want to input a mixed fraction
-                System.out.print("Do you want to input a mixed fraction? (yes/no): ");
-                String choice = scanner.next().toLowerCase();
+        int numerator;
+        int denominator;
 
-                // Validate user input
-                if (!choice.equals("yes") && !choice.equals("no")) {
-                    throw new InputMismatchException(); // Throw exception for invalid choice
+        // Prompt for the whole number if the fractions are going to be mixed fractions
+        if (useMixedFractions) {
+            while (true) {
+                try {
+                    System.out.print("Enter the whole number part: ");
+                    wholeNumber = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input for whole number. Please enter a valid numeric value.");
+                    scanner.nextLine(); // Clear the invalid input
                 }
-
-                // prompt for the whole number part if user wants to input a mixed fraction,
-                if (choice.equals("yes")) {
-                    // Input for whole number
-                    while (true) {
-                        try {
-                            System.out.print("Enter the whole number part: ");
-                            wholeNumber = scanner.nextInt();
-                            break; // Exit the loop if input is valid
-                        } catch (InputMismatchException e) {
-                            System.out.println("Invalid input for whole number. Please enter a valid numeric value.");
-                            scanner.nextLine(); // Clear the invalid input
-                        }
-                    }
-                }
-                break; // Exits the loop if choice input is valid
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-                scanner.nextLine(); // Clears the invalid input
             }
         }
 
-        // Input for numerator
+        // Prompt for numerator
         while (true) {
             try {
-                System.out.print("Enter numerator: ");
+                System.out.print("Enter the numerator: ");
                 numerator = scanner.nextInt();
-                break; // Exits the loop if the input is valid
+                break;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input for numerator. Please enter a valid numeric value.");
-                scanner.nextLine(); // Clears the invalid input
+                scanner.nextLine(); // Clear the invalid input
             }
         }
 
-        // Input for denominator
+        // Prompt for denominator
         while (true) {
             try {
-                System.out.print("Enter denominator: ");
+                System.out.print("Enter the denominator: ");
                 denominator = scanner.nextInt();
                 if (denominator != 0) {
-                    break; // Exits the loop if the input is valid and not equal to zero
+                    break;
                 } else {
                     System.out.println("Denominator cannot be zero. Please enter a non-zero value.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input for denominator. Please enter a valid numeric value.");
-                scanner.nextLine(); // Clears the invalid input
+                scanner.nextLine(); // Clear the invalid input
             }
         }
 
-        //converts a mixed fraction into regular fraction before returning the value
+        // Convert a mixed fraction into a regular fraction before returning the value
         try {
             if (wholeNumber != 0) {
                 return new Fraction(wholeNumber * denominator + numerator, denominator);
@@ -180,7 +171,6 @@ public class FractionArithmetic {
             System.out.println("Error: " + e.getMessage()); // Handle division by zero
             return null;
         }
-
     }//end of getFractionFromUser method
     
     /**
@@ -192,6 +182,8 @@ public class FractionArithmetic {
     *The reducement operation is on the run method.
     *Reducement is not on this method but exists as an else-if statement on the run method that is used by the program if the user selects
     *the 5th option (reducement) in the operation selection menu
+    * @param fraction1 The first fraction involved in the operation
+    * @param fraction2 The second fraction involved in the operation
     */
     private void fractionOperation(int choice, Fraction fraction1, Fraction fraction2){
         switch (choice) {
