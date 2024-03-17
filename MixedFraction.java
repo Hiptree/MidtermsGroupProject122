@@ -50,23 +50,31 @@ public class MixedFraction extends Fraction {
         return new Fraction (this.getNumerator(), this.getDenominator());
     }
 
-    /** This method converts the MixedFraction to Fraction
-     * mixed fraction represented as
-     *              numerator
-     *  wholeNumber ---------
-     *              denominator
-     * The method multiplies the whole number by the denominator
-     * then adds the numerator to multiplied numbers
-     * the denominator remains the same
+    /**
+     * This method converts the {@code MixedFraction} to {@code Fraction}.
      *
-     *the mixed fraction becomes
-     * (wholeNumber * denominator) + numerator
-     * --------------------------------------
-     *              deenominator
+     * <p>
+     * A mixed fraction is represented as:
+     * <ul>
+     *     {@code wholeNumber (numerator/denominator)}
+     * </ul>
+     *
+     * This method multiplies the whole number by the denominator then
+     * adds the numerator to the product. The result is then assigned as
+     * the new numerator while the denominator remains the same.
+     *
+     * <ul>
+     *     The mixed fraction becomes:
+     *     <ul>
+     *         {@code [(wholeNumber * denominator) + numerator]/denominator}
+     *     </ul>
+     * </ul>
+     * </p>
+     *
+     * @return the converted {@code MixedFraction} as a new {@code Fraction}.
      */
-
     public Fraction toFraction(){
-        int newNumerator = this.wholeNumber * this.getDenominator() + this.getNumerator();
+        int newNumerator = (this.wholeNumber * this.getDenominator()) + this.getNumerator();
         // Returns a new fraction
         return new Fraction(newNumerator, this.getDenominator());
     }
