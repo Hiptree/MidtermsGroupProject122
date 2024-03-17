@@ -149,11 +149,14 @@ public class MixedFraction extends Fraction {
 
         return new MixedFraction(diffWhole, diffFrac.reduce());
     }
-    
-    /*
-    * Multiply this mixed fraction to another mixed fraction
-    * then returns the product as a new mixed fraction
-    */
+
+    /**
+     * Multiplies this mixed fraction by another mixed fraction.
+     *
+     * @param mixedFrac2 the other mixed fraction to multiply this
+     *                   mixed fraction by
+     * @return the product as a new mixed fraction
+     */
     public MixedFraction multiplyBy(MixedFraction mixedFrac2) {
         // Multiply the whole numbers
         int resultWhole = wholeNumber * mixedFrac2.getWhole();
