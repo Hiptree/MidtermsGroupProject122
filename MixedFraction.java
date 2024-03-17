@@ -145,6 +145,14 @@ public class MixedFraction extends Fraction {
     }
 
     /**
+     * Returns this mixed fraction as {@code double}.
+     */
+    @Override
+    public double toDouble() {
+        return (this.toFraction()).toDouble();
+    }
+
+    /**
      * Adds another mixed fraction to this mixed fraction.
      *
      * @param mixedFrac2 the other mixed fraction to be added to this mixed fraction
