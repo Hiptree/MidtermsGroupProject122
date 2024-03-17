@@ -49,8 +49,6 @@ public class FractionArithmetic {
              * it also loops the prompt if the user inputs something that is not among
              * the options.
              *
-             *
-             * might not be needed if the operands are on another method
              * */
             int choice;
             try {
@@ -60,14 +58,14 @@ public class FractionArithmetic {
                 System.out.println("Invalid input for choice. Please enter a number.");
                 scanner.next(); // Clear the invalid input
                 continue;
-            } if (choice < 1 || choice > 6) {
+            } if (choice < 1 || choice > 6) {//triggers if the user inputs an invalid option
                 System.out.println("Enter a valid number!");
                 System.out.print("Enter Operation Here: ");
                 scanner.next(); // Clear the invalid input
                 continue;
 
             }
-            else if (choice == 6) {
+            else if (choice == 6) {//choice 6 exits the program
                 System.out.println("Exiting program. Goodbye!");
                 System.exit(0);
                 break;
@@ -184,6 +182,8 @@ public class FractionArithmetic {
     *The third case is multiplication.
     *The fourth case is division.
     *The reducement operation is on the run method.
+    *Reducement is not on this method but exists as an else-if statement on the run method that is used by the program if the user selects
+    *the 5th option (reducement) in the operation selection menu
     */
     private void fractionOperation(int choice, Fraction fraction1, Fraction fraction2){
         switch (choice) {
