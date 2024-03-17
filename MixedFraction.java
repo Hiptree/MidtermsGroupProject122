@@ -119,4 +119,25 @@ public class MixedFraction extends Fraction {
 
         return new MixedFraction(diffWhole, diffFrac.reduce());
     }
+    public MixedFraction multiply(MixedFraction mixedFrac2) {
+    // Multiply the whole numbers
+    int resultWhole = wholeNumber * mixedFrac2.getWhole();
+    
+    // Multiply the fractions
+    Fraction fraction1 = this.getFractionPart();
+    Fraction fraction2 = mixedFrac2.getFractionPart();
+    Fraction resultFraction = fraction1.multiply(fraction2);
+
+    return new MixedFraction(resultWhole, resultFraction.reduce());
+}
+    public MixedFraction divide(MixedFraction mixedFrac2) {
+    // Divide the whole numbers
+    int resultWhole = wholeNumber / mixedFrac2.getWhole();
+    
+    Fraction fraction1 = this.getFractionPart();
+    Fraction fraction2 = mixedFrac2.getFractionPart().invert();
+    Fraction resultFraction = fraction1.multiply(fraction2);
+
+    return new MixedFraction(resultWhole, resultFraction.reduce());
+}
 }
