@@ -93,10 +93,8 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Adds another mixed fraction to this mixed fraction.
-     *
-     * @param mixedFrac2 the other mixed fraction to be added to this mixed fraction
-     * @return the sum as a new mixed fraction.
+     * Adds this mixed fraction to another mixed fraction and
+     * returns the sum as a new mixed fraction.
      */
     public MixedFraction add(MixedFraction mixedFrac2) {
         int sumWhole = wholeNumber + mixedFrac2.getWhole();
@@ -109,10 +107,8 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * Subtracts another mixed fraction from this mixed fraction.
-     *
-     * @param mixedFrac2 the other mixed fraction to be subtracted from this mixed fraction
-     * @return the difference as a new mixed fraction
+     * Subtracts another mixed fraction from this mixed fraction 
+     * and returns the difference as a new mixed fraction.
      */
     public MixedFraction subtract(MixedFraction mixedFrac2) {
         int diffWhole = wholeNumber - mixedFrac2.getWhole();
@@ -123,7 +119,10 @@ public class MixedFraction extends Fraction {
 
         return new MixedFraction(diffWhole, diffFrac.reduce());
     }
-
+    /*
+    * Multiply this mixed fraction to another mixed fraction
+    * then returns the product as a new mixed fraction
+    */
     public MixedFraction multiplyBy(MixedFraction mixedFrac2) {
         // Multiply the whole numbers
         int resultWhole = wholeNumber * mixedFrac2.getWhole();
@@ -135,7 +134,11 @@ public class MixedFraction extends Fraction {
 
         return new MixedFraction(resultWhole, resultFraction.reduce());
     }
-
+    /*Divide this whole number of the mixed fraction to another
+    * whole number of the mixed fraction then invert the fraction 2
+    * and multiply the mixed fractions
+    * then returns the quotient as a new mixed number
+    * */
     public MixedFraction divideBy(MixedFraction mixedFrac2) {
         // Divide the whole numbers
         int resultWhole = wholeNumber / mixedFrac2.getWhole();
