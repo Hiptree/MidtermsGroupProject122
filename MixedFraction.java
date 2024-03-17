@@ -35,9 +35,10 @@ public class MixedFraction extends Fraction {
     }
 
     /**
-     * This constructor creates a MixedFraction object with just a fraction object
-     * Example: if you have the fraction 2/4, this constructor will make the mixed fraction
-     * 0 1/2 which is just 1/2
+     * This constructor creates a {@code MixedFraction} object with the given {@code Fraction} object.
+     *
+     * For example, if you have the fraction {@code 2/4}, this constructor will make the mixed fraction
+     * {@code 0 1/2} which is just equal to {@code 1/2}.
      */
     public MixedFraction(Fraction fraction){
         super(fraction.getNumerator(), fraction.getDenominator());//initialize the Fraction part of the MixedFraction object
