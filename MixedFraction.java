@@ -17,10 +17,9 @@ public class MixedFraction extends Fraction {
     private int wholeNumber; //instance variable for the whole number
     
     /**
-     * This constructor creates a MixedFraction object with a whole number and a Fraction object
-     * for example, if you want to make a mixed fraction with a whole number and a fraction lets
-     * say you have wholenumber = 3 nad   the fraction =1/2 this constructor will make
-     * the mixed fraction 3 1/2
+     * This constructor creates a {@code MixedFraction} object with a whole number and a {@code Fraction}
+     * object, for example, if you want to make a mixed fraction with a whole number and a fraction, let us
+     * say you have a whole number = 3 and a fraction = 1/2, this constructor constructs the mixed fraction = 3 1/2.
      */
     public MixedFraction(int whole, Fraction fraction){
         super(fraction.getNumerator(), fraction.getDenominator());//initialize the Fraction part of the MixedFraction object
