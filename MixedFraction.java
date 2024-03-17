@@ -136,7 +136,7 @@ public class MixedFraction extends Fraction {
 
         // Invert and multiply the fractions
         Fraction fraction1 = this.getFractionPart();
-        Fraction fraction2 = mixedFrac2.getFractionPart().invert();
+        Fraction fraction2 = new Fraction(mixedFrac2.getDenominator(), mixedFrac2.getNumerator());
         Fraction resultFraction = fraction1.divideBy(fraction2);
 
         return new MixedFraction(resultWhole, resultFraction.reduce());
