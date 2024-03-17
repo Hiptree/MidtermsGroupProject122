@@ -71,18 +71,36 @@ public class MixedFraction extends Fraction {
         return new Fraction(newNumerator, this.getDenominator());
     }
 
-    /** this method checks if the denominator is 0 if zero, returns undefined.
-     * else if the denominator is zero for example 18/-9 the denominator
-     * and the numerator will be multiplied by -1
-     * then it will return the numerator and the denominator as -numerator/denominator
-     * instead of numerator/-denominator
-     * if the denominator is not negative then it will return numerator/denominator
-    */
-
+    /**
+     * Returns a {@code String} representation of the mixed fraction as
+     * "{@code wholeNumber numerator/denominator}".
+     *
+     * <p>
+     * If the whole number is 0;
+     * <ul>
+     *     this method returns the mixed fraction without its whole number.
+     *     For example, {@code 0 3/5} will be returned as {@code 3/5}.
+     * </ul>
+     *
+     * If the denominator is equal to 1;
+     * <ul>
+     *     this method returns an integer equal to {@code wholeNumber + numerator}.
+     *     For example, {@code 2 2/1} will be returned as {@code 4} (2 + 2).
+     * </ul>
+     *
+     * If the denominator is negative;
+     * <ul>
+     *     both numerator and denominator will be multiplied to -1 so that a mixed
+     *     fraction with a negative denominator will not be displayed as
+     *     "{@code wholeNumber numerator/-denominator}," but "{@code wholeNumber -numerator/denominator}."
+     *     For example, {@code 2 18/-8} will be returned as {@code 2 -18/8}.
+     * </ul>
+     */
     public String toString() {
-
-        if (getDenominator() == 0) {
-            return "Undefined";
+        if (wholeNumber == 0) {
+            return getNumerator() + "/" + getDenominator();
+        } else if (getDenominator() == 1) {
+            return String.valueOf(wholeNumber + getNumerator());
         } else if (getDenominator() < 0) {
             int num = getNumerator()* -1;
             int den = getDenominator()* -1;
