@@ -191,16 +191,12 @@ public class MixedFraction extends Fraction {
      *                   mixed fraction by
      * @return the product as a new mixed fraction
      */
-    public MixedFraction multiplyBy(MixedFraction mixedFrac2) {
-        // Multiply the whole numbers
-        int resultWhole = wholeNumber * mixedFrac2.getWhole();
+    public Fraction multiplyBy(MixedFraction mixedFrac2) {
+        Fraction fraction1 = this.toFraction();
+        Fraction fraction2 = mixedFrac2.toFraction();
+        Fraction result = fraction1.multiplyBy(fraction2);
 
-        // Multiply the fractions
-        Fraction fraction1 = this.getFractionPart();
-        Fraction fraction2 = mixedFrac2.getFractionPart();
-        Fraction resultFraction = fraction1.multiplyBy(fraction2);
-
-        return new MixedFraction(resultWhole, resultFraction.reduce());
+        return result;
     }
 
     /**
@@ -210,15 +206,13 @@ public class MixedFraction extends Fraction {
      *                   mixed fraction by
      * @return the quotient as a new mixed fraction
      */
-    public MixedFraction divideBy(MixedFraction mixedFrac2) {
-        // Divide the whole numbers
-        int resultWhole = wholeNumber / mixedFrac2.getWhole();
+    public Fraction divideBy(MixedFraction mixedFrac2) {
+        Fraction fraction1 = this.toFraction();
+        Fraction fraction2 = mixedFrac2.toFraction();
+        fraction2.setNumerator(fraction2.getDenominator());
+        fraction2.setDenominator(mixedFrac2.toFraction().getNumerator());
+        Fraction result = fraction1.multiplyBy(fraction2);
 
-        // Invert and multiply the fractions
-        Fraction fraction1 = this.getFractionPart();
-        Fraction fraction2 = new Fraction(mixedFrac2.getDenominator(), mixedFrac2.getNumerator());
-        Fraction resultFraction = fraction1.divideBy(fraction2);
-
-        return new MixedFraction(resultWhole, resultFraction.reduce());
+        return result;
     }
 }
