@@ -46,23 +46,32 @@ public class MixedFraction extends Fraction {
         this.wholeNumber = 0;
     }
 
-    // Setter for wholeNumber
+    /**
+     * Sets the whole number of this mixed fraction.
+     */
     public void setWholeNumber(int whole){
         this.wholeNumber = whole;
     }
 
-    // Getter for wholeNumber
+    /**
+     * Returns the whole number of this mixed fraction.
+     */
     public int getWhole(){
         return this.wholeNumber;
     }
 
-    // Setter for Fraction Part
+    /**
+     * Accepts a {@code Fraction} object and assigns the values of its attributes
+     * to the numerator and denominator of this mixed fraction.
+     */
     public void setFractionPart(Fraction fraction){
         this.setNumerator(fraction.getNumerator());
         this.setDenominator(fraction.getDenominator());
     }
 
-    // Getter for Fraction Part
+    /**
+     * Returns the fractional part of this mixed fraction as a {@code Fraction} object.
+     */
     public Fraction getFractionPart(){
         return new Fraction (this.getNumerator(), this.getDenominator());
     }
