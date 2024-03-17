@@ -168,12 +168,14 @@ public class MixedFraction extends Fraction {
 
         return new MixedFraction(resultWhole, resultFraction.reduce());
     }
-    
-    /*Divide this whole number of the mixed fraction to another
-    * whole number of the mixed fraction then invert the fraction 2
-    * and multiply the mixed fractions
-    * then returns the quotient as a new mixed number
-    * */
+
+    /**
+     * Divides this mixed fraction by another mixed fraction.
+     *
+     * @param mixedFrac2 the other mixed fraction to divide this
+     *                   mixed fraction by
+     * @return the quotient as a new mixed fraction
+     */
     public MixedFraction divideBy(MixedFraction mixedFrac2) {
         // Divide the whole numbers
         int resultWhole = wholeNumber / mixedFrac2.getWhole();
