@@ -25,7 +25,10 @@ public class MixedFraction extends Fraction {
         super(fraction.getNumerator(), fraction.getDenominator());//initialize the Fraction part of the MixedFraction object
         this.wholeNumber=whole;
     }
-    //
+
+    /**
+     * Constructs a mixed fraction with the given whole number, numerator, and denominator.
+     */
     public MixedFraction(int whole, int numerator, int denominator){
         super(numerator, denominator);//initialize the Fraction part of the MixedFraction object
         this.wholeNumber = whole;
