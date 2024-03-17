@@ -1,5 +1,18 @@
 package CombinedCodes;
 
+/**
+ * The {@code MixedFraction} class is a subclass of {@code Fraction}. This class represents a
+ * mixed fraction, inheriting the attributes of the {@code Fraction} class with
+ * {@code wholeNumber} as its unique attribute.
+ *
+ * <p>
+ * It contains constructors, setter and getter methods, as well
+ * as methods for performing basic operations on fractions, including arithmetic operations,
+ * extracting the fractional part of a mixed fraction, and converting a mixed fraction to
+ * an improper fraction. Additionally, this class includes methods for representing a fraction
+ * as a String and as a double.
+ * </p>
+ */
 public class MixedFraction extends Fraction {
     private int wholeNumber; //instance variable for the whole number
     
