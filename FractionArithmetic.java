@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * This main class allows a user perform basic operations on fractions through a command-line program.
+ * It also handles any exception that may occur during the program's execution.
  */
 public class FractionArithmetic {
     static Scanner keyboard = new Scanner(System.in);
@@ -12,9 +13,11 @@ public class FractionArithmetic {
         FractionArithmetic ourProgram;
 
         try {
+            //creates an instance of FractionArithmethic
             ourProgram = new FractionArithmetic();
             ourProgram.run();
         } catch (InputMismatchException ex) {
+                    // Handle InputMismatchException if it occurs
             System.out.println("Invalid input. Please enter valid numeric values.");
         }
     }//end of main method
@@ -34,6 +37,8 @@ public class FractionArithmetic {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            //operation selection menu
             System.out.println("""
                 ———MENU—————————————————————
                    [1] Add fractions
@@ -43,6 +48,8 @@ public class FractionArithmetic {
                    [5] Reduce a fraction
                    [6] Quit
                 ————————————————————————————""");
+             System.out.print("Enter here: ");//This is where the user enters what operation they wish to perform.
+
 
             /*
              * The block of ode below initiates the operation choices.
