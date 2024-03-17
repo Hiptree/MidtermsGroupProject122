@@ -17,8 +17,13 @@ public class FractionArithmetic {
         } catch (InputMismatchException ex) {
             System.out.println("Invalid input. Please enter valid numeric values.");
         }
-    }
-
+    }//end of main method
+    
+     /**
+     * Runs the program and provides a menu for the user to select the operations they want.
+     * It also handles input exceptions and loops the part of the program's prompt where 
+     the exception occurred until a valid input has been entered.
+     */
     public void run() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Fraction Arithmetic"); //introduction message prompt
@@ -40,7 +45,7 @@ public class FractionArithmetic {
                 ————————————————————————————""");
 
             /*
-             * code below initiates the operation choices.
+             * The block of ode below initiates the operation choices.
              * it also loops the prompt if the user inputs something that is not among
              * the options.
              *
@@ -86,11 +91,10 @@ public class FractionArithmetic {
 
     }//end of run
 
-    /*below is a method used to get the value of the fractions via user input
-     * if the user inputs a non-numerical value or 0, it repeats the prompt until the user
-     * inputs something valid
-     *
-     * */
+  /* The method below gets the values for the fractions needed for the selected operation.
+  * Like the run method, it also validates if the input for the whole number, denominator, or numerator
+  * are valid and loops the part of the prompt where an invalid input was made.
+  */
    private Fraction getFractionFromUser() {
         Scanner scanner = new Scanner(System.in);
 
@@ -173,6 +177,14 @@ public class FractionArithmetic {
 
     }//end of getFractionFromUser method
     
+    /**
+    *Performs the operation selected by the user and displays the result
+    *The first case is addition.
+    *The second case is subtraction.
+    *The third case is multiplication.
+    *The fourth case is division.
+    *The reducement operation is on the run method.
+    */
     private void fractionOperation(int choice, Fraction fraction1, Fraction fraction2){
         switch (choice) {
             case 1 -> {
@@ -202,4 +214,4 @@ public class FractionArithmetic {
             default -> System.out.println("Invalid Choice!"); //actual code later
         }//end of switch-case
     }//end of fractionOperation
-}
+}//end of class
