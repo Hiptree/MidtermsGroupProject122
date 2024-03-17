@@ -197,6 +197,13 @@ package CombinedCodes;
 
             return gCD;
         }
+            public MixedFraction toMixedFraction(){
+        int numerator = this.getNumerator();
+        int denominator = this.getDenominator();
+        int wholeNumber = numerator/denominator;
+        numerator = numerator - (wholeNumber * denominator);
+        return new MixedFraction (wholeNumber, numerator, denominator);
+    }
 
         public double toDouble() {
             return (double) numerator/denominator;
