@@ -3,8 +3,8 @@ import java.util.*;
 
 
 /**
- * This main class allows a user perform basic operations on fractions through a command-line program.
- * It also handles any exception that may occur during the program's execution.
+ * This main class allows a user to perform basic operations on fractions through a command-line program.
+ * It also handles any exceptions that may occur during the program's execution.
  */
 public class FractionArithmetic {
     static Scanner keyboard = new Scanner(System.in);
@@ -23,7 +23,7 @@ public class FractionArithmetic {
     }//end of main method
     
      /**
-     * Runs the program and provides a menu for the user to select the operations they want.
+     * The run method runs the program and provides a menu for the user to select the operations they want.
      * It also handles input exceptions and loops the part of the program's prompt where 
      the exception occurred until a valid input has been entered.
      */
@@ -52,7 +52,7 @@ public class FractionArithmetic {
 
 
             /*
-             * The block of ode below initiates the operation choices.
+             * The block of code below initiates the operation choices.
              * it also loops the prompt if the user inputs something that is not among
              * the options.
              *
@@ -96,7 +96,8 @@ public class FractionArithmetic {
 
     }//end of run
 
-  /* The method below gets the values for the fractions needed for the selected operation.
+  /* The getFractionFromUser gets the values for the fractions needed for the selected operation via user input.
+  * It first prompts the user if they wish to enter a mixed fraction or a regular fraction before they get to input.
   * Like the run method, it also validates if the input for the whole number, denominator, or numerator
   * are valid and loops the part of the prompt where an invalid input was made.
   */
@@ -183,7 +184,7 @@ public class FractionArithmetic {
     }//end of getFractionFromUser method
     
     /**
-    *Performs the operation selected by the user and displays the result
+    *The fractionOperation method [erforms the operation selected by the user and displays the result
     *The first case is addition.
     *The second case is subtraction.
     *The third case is multiplication.
