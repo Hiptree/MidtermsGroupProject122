@@ -66,6 +66,7 @@ public class FractionArithmetic {
             }
 
             // Check if the choice is valid
+
             if (choice < 1 || choice > 6) {
                 System.out.println("Enter a valid number!");
                 continue;
@@ -133,7 +134,7 @@ public class FractionArithmetic {
      * If useMixedFractions is false, the method prompts the user to input a regular fraction.
      *
      *
-     * @return the fraction that is inputted is returned
+     * @return the mixed fraction that is inputted is returned
      *Like the run method, it also validates if the input for the whole number, denominator, or numerator
      * are valid and loops the part of the prompt where an invalid input was made.
      */
@@ -180,7 +181,16 @@ public class FractionArithmetic {
         }
         return new MixedFraction(wholeNumber, numerator, denominator);
     }//end of getFractionFromUser
-
+    /**
+     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction, based on value of the boolean useMixedFractions on the run method
+     * If useMixedFractions is true, the method prompts the user to input a mixed fraction.
+     * If useMixedFractions is false, the method prompts the user to input a regular fraction.
+     *
+     *
+     * @return the fraction that is inputted is returned
+     *Like the run method, it also validates if the input for the denominator or numerator
+     * are valid and loops the part of the prompt where an invalid input was made.
+     */
     private Fraction getFractionFromUser() {
         Scanner scanner = new Scanner(System.in);
 
@@ -216,7 +226,7 @@ public class FractionArithmetic {
     }//end of getFractionFromUser
 
     /**
-     *The fractionOperation method [erforms the operation selected by the user and displays the result
+     *The fractionOperation method performs the operation selected by the user and displays the result
      *The first case is addition.
      *The second case is subtraction.
      *The third case is multiplication.
@@ -224,6 +234,7 @@ public class FractionArithmetic {
      *The reducement operation is on the run method.
      *Reducement is not on this method but exists as an else-if statement on the run method that is used by the program if the user selects
      *the 5th option (reducement) in the operation selection menu
+     * @param choice
      * @param fraction1 The first fraction involved in the operation
      * @param fraction2 The second fraction involved in the operation
      */
@@ -257,6 +268,19 @@ public class FractionArithmetic {
         }//end of switch-case
     }//end of fractionOperation
 
+    /**
+     *The mixedFractionOperation method performs the operation selected by the user and displays the result
+     *The first case is addition.
+     *The second case is subtraction.
+     *The third case is multiplication.
+     *The fourth case is division.
+     *The reducement operation is on the run method.
+     *Reducement is not on this method but exists as an else-if statement on the run method that is used by the program if the user selects
+     *the 5th option (reducement) in the operation selection menu
+     * @param choice
+     * @param fraction1 The first fraction involved in the operation
+     * @param fraction2 The second fraction involved in the operation
+     */
     private void mixedFractionOperation(int choice, MixedFraction fraction1, MixedFraction fraction2){
         switch (choice) {
             case 1 -> {
