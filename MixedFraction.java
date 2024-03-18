@@ -189,7 +189,7 @@ public class MixedFraction extends Fraction {
      *
      * @param mixedFrac2 the other mixed fraction to multiply this
      *                   mixed fraction by
-     * @return the product as a new mixed fraction
+     * @return the product as a new fraction
      */
     public Fraction multiplyBy(MixedFraction mixedFrac2) {
         Fraction fraction1 = this.toFraction();
@@ -204,7 +204,7 @@ public class MixedFraction extends Fraction {
      *
      * @param mixedFrac2 the other mixed fraction to divide this
      *                   mixed fraction by
-     * @return the quotient as a new mixed fraction
+     * @return the quotient as a new fraction
      */
     public Fraction divideBy(MixedFraction mixedFrac2) {
         Fraction fraction1 = this.toFraction();
