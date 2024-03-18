@@ -154,6 +154,7 @@ package CombinedCodes;
         the commonFactor to denominator1 and making it the value of denominator 1 */
             return denominator1;
         }
+
         /**
          * This method will help convert fractions so that two fractions will be similar
          * with the help of computed LCD from the previous method
