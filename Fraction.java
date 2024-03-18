@@ -57,28 +57,28 @@ package CombinedCodes;
         }
 
         public Fraction add(Fraction another){
-            Fraction sum = new Fraction(); //create an object of fraction that will hold the value of added fractions
+            Fraction sum = new Fraction(); // create an object of fraction that will hold the value of added fractions
 
-            //fractions with 0 as denominator does not exist and is therefore invalid
+            // fractions with 0 as denominator does not exist and is therefore invalid
             if (this.denominator ==0 || another.denominator==0){
                 throw new IllegalArgumentException("Denominator cannot be 0");
             }
 
-            //this will be executed if the fractions are similar
+            // this will be executed if the fractions are similar
             if(this.denominator == another.denominator){
                 sum.numerator = this.numerator+ another.numerator;
                 sum.denominator = this.denominator;
-            }else {
+            } else {
 
-                //if the fractions are dissimilar, this codes will be executed
-                //compute for LCD of two fractions to start converting
+                // if the fractions are dissimilar, this codes will be executed
+                // compute for LCD of two fractions to start converting
                 int lcd = computeLCD(this.denominator, another.denominator);
 
-                //now that we have the LCD, the next step is to convert each fraction to make them similar
-                //but since we are making a new fraction here, we must create an object of new fraction
-                Fraction convertedFraction = new Fraction(); //object of fraction for the first fraction
-                Fraction convertedAnother = new Fraction(); //object of fraction for the second fraction
-                convertedFraction = makeSimilar(lcd);   //call the method to make them similar and pass the value of their lcd
+                // now that we have the LCD, the next step is to convert each fraction to make them similar
+                // but since we are making a new fraction here, we must create an object of new fraction
+                Fraction convertedFraction = new Fraction(); // object of fraction for the first fraction
+                Fraction convertedAnother = new Fraction(); // object of fraction for the second fraction
+                convertedFraction = makeSimilar(lcd);   // call the method to make them similar and pass the value of their lcd
                 convertedAnother = another.makeSimilar(lcd);
 
                 // integrate the values to the object sum
@@ -106,7 +106,7 @@ package CombinedCodes;
                 // Step 4: Simplify the result
                 return new Fraction(newNumerator, newDenominator);
             }
-        }//end of method
+        } //end of method
 
         public Fraction multiplyBy(Fraction fraction2) {
             int productNum = numerator * fraction2.getNumerator();
@@ -128,30 +128,30 @@ package CombinedCodes;
 
         /**this method will compute the least common denominator to make dissimilar fractions similar*/
         private int computeLCD(int denominator1 , int denominator2){
-        /*set the initial value of common factor to denominator 1
-         so that when the addition assignment operator will be helpful*/
+        /* set the initial value of common factor to denominator 1
+         so that when the addition assignment operator will be helpful */
             int commonFactor = denominator1;
 
-        /*loop until the remainder is not = 0.
-         when 0, this means that the final value is now the common factor or the LCD*/
+        /* loop until the remainder is not = 0.
+         when 0, this means that the final value is now the common factor or the LCD */
             while ((denominator1%denominator2)!= 0)
                 denominator1 += commonFactor;
 
-        /*addition assignment operator, it works by adding
-        the commonFactor to denominator1 and making it the value of denominator 1*/
+        /* addition assignment operator, it works by adding
+        the commonFactor to denominator1 and making it the value of denominator 1 */
             return denominator1;
         }
         /**This method will help convert fractions so that two fractions will be similar
          * with the help of computed LCD from the previous method
          */
-        private Fraction makeSimilar (int LCD){ //in converting fractions into similar, we need the LCD
-            Fraction result = new Fraction(); //create a new object of fraction
+        private Fraction makeSimilar (int LCD){ // in converting fractions into similar, we need the LCD
+            Fraction result = new Fraction(); // create a new object of fraction
 
-        /*in converting similar fractions, we need to divide the LCD to the denominator
-        and the resulting factor will be multiplied to the numerator so that it will still be equal*/
+        /* in converting similar fractions, we need to divide the LCD to the denominator
+        and the resulting factor will be multiplied to the numerator so that it will still be equal */
             int multiplier = LCD/ denominator;
-            result.numerator = numerator*multiplier; //multiply the factor to the numerator
-            result.denominator = LCD; //the denominator will be the LCD
+            result.numerator = numerator*multiplier; // multiply the factor to the numerator
+            result.denominator = LCD; // the denominator will be the LCD
             return result;
         }
 
@@ -197,13 +197,14 @@ package CombinedCodes;
 
             return gCD;
         }
-            public MixedFraction toMixedFraction(){
-        int numerator = this.getNumerator();
-        int denominator = this.getDenominator();
-        int wholeNumber = numerator/denominator;
-        numerator = numerator - (wholeNumber * denominator);
-        return new MixedFraction (wholeNumber, numerator, denominator);
-    }
+
+        public MixedFraction toMixedFraction(){
+            int numerator = this.getNumerator();
+            int denominator = this.getDenominator();
+            int wholeNumber = numerator/denominator;
+            numerator = numerator - (wholeNumber * denominator);
+            return new MixedFraction (wholeNumber, numerator, denominator);
+        }
 
         public double toDouble() {
             return (double) numerator/denominator;
