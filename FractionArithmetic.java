@@ -181,6 +181,7 @@ public class FractionArithmetic {
         }
         return new MixedFraction(wholeNumber, numerator, denominator);
     }//end of getFractionFromUser
+    
     /**
      * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction, based on value of the boolean useMixedFractions on the run method
      * If useMixedFractions is true, the method prompts the user to input a mixed fraction.
