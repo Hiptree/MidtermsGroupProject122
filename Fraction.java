@@ -108,6 +108,9 @@ package CombinedCodes;
             }
         } //end of method
 
+        /**
+         * Multiplies this fraction by the given fraction and returns the product as a new Fraction.
+         */
         public Fraction multiplyBy(Fraction fraction2) {
             int productNum = numerator * fraction2.getNumerator();
             int productDen = denominator * fraction2.getDenominator();
@@ -115,6 +118,14 @@ package CombinedCodes;
             return new Fraction(productNum, productDen);
         }
 
+        /**
+         * Divides this fraction by the given fraction and returns the quotient as a new Fraction.
+         *
+         * If either the numerator or denominator of the second fraction is equal to 0, this method
+         * returns a new Fraction (1/0) that results in Undefined. This is because when the numerator
+         * or denominator of `fraction2` equals 0, then `fraction2` results in either 0 or undefined.
+         * Hence, `fraction1` cannot be divided by 0 or undefined, as the result will be undefined indefinitely.
+         */
         public Fraction divideBy(Fraction fraction2) {
             if (fraction2.getNumerator() == 0 || fraction2.getDenominator() == 0) {
                 return new Fraction(1, 0);
@@ -126,7 +137,9 @@ package CombinedCodes;
             return new Fraction(quotientNum, quotientDen);
         }
 
-        /**this method will compute the least common denominator to make dissimilar fractions similar*/
+        /**
+         * This method will compute the least common denominator to make dissimilar fractions similar
+         */
         private int computeLCD(int denominator1 , int denominator2){
         /* set the initial value of common factor to denominator 1
          so that when the addition assignment operator will be helpful */
@@ -141,7 +154,8 @@ package CombinedCodes;
         the commonFactor to denominator1 and making it the value of denominator 1 */
             return denominator1;
         }
-        /**This method will help convert fractions so that two fractions will be similar
+        /**
+         * This method will help convert fractions so that two fractions will be similar
          * with the help of computed LCD from the previous method
          */
         private Fraction makeSimilar (int LCD){ // in converting fractions into similar, we need the LCD
@@ -155,6 +169,11 @@ package CombinedCodes;
             return result;
         }
 
+        /**
+         * Simplifies the fraction to its simplest form by dividing both the
+         * numerator and denominator by their greatest common divisor (GCD), then
+         * returns the simplified fraction.
+         */
         public Fraction reduce() {
             int gCD = computeGCD();
 
@@ -168,6 +187,10 @@ package CombinedCodes;
             }
         }
 
+        /**
+         * Computes the greatest common divisor (GCD) of the numerator and denominator
+         * of the fraction using Euclid's algorithm for calculating the GCD of two numbers.
+         */
         private int computeGCD() {
             int x = numerator;
             int y = denominator;
@@ -206,10 +229,22 @@ package CombinedCodes;
             return new MixedFraction (wholeNumber, numerator, denominator);
         }
 
+        /**
+         * Returns the value of the fraction as double.
+         */
         public double toDouble() {
             return (double) numerator/denominator;
         }
 
+        /**
+         * Returns a string representation of the fraction as "numerator/denominator".
+         *
+         * If the denominator is 0, it returns "Undefined". If the denominator is negative,
+         * both the numerator and denominator are multiplied by -1 so that a fraction
+         * with a negative denominator will not be displayed as "numerator/-denominator,"
+         * but "-numerator/denominator." For example, if the original fraction is 5/-9,
+         * the fraction would be returned as a String as "-5/9".
+         */
         public String toString() {
             if (denominator == 0) {
                 return "Undefined";
