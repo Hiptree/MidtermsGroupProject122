@@ -40,7 +40,7 @@ public class FractionArithmetic {
             }
 
             // Prompt the user to choose whether to use mixed fractions or not
-            System.out.print("Do you want to perform operations on mixed fractions? (Type yes or no): ");
+            System.out.print("Do you want to perform operations on mixed fractions? \"Yes\" or \"No?\" : ");
             String choiceMixed = scanner.next().toLowerCase();
 
             // Display the menu for fraction operations
