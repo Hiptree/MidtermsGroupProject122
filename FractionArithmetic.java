@@ -129,7 +129,8 @@ public class FractionArithmetic {
 
 
     /**
-     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction, based on value of the boolean useMixedFractions on the run method
+     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction,
+     * based on value of the boolean useMixedFractions on the run method.
      * If useMixedFractions is true, the method prompts the user to input a mixed fraction.
      * If useMixedFractions is false, the method prompts the user to input a regular fraction.
      *
@@ -183,7 +184,8 @@ public class FractionArithmetic {
     }//end of getFractionFromUser
     
     /**
-     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction, based on value of the boolean useMixedFractions on the run method
+     * Prompts the user to input a fraction, either as a regular fraction or a mixed fraction,
+     * based on value of the boolean useMixedFractions on the run method.
      * If useMixedFractions is true, the method prompts the user to input a mixed fraction.
      * If useMixedFractions is false, the method prompts the user to input a regular fraction.
      *
@@ -270,14 +272,15 @@ public class FractionArithmetic {
     }//end of fractionOperation
 
     /**
-     *The mixedFractionOperation method performs the operation selected by the user and displays the result
-     *The first case is addition.
-     *The second case is subtraction.
-     *The third case is multiplication.
-     *The fourth case is division.
-     *The reducement operation is on the run method.
-     *Reducement is not on this method but exists as an else-if statement on the run method that is used by the program if the user selects
-     *the 5th option (reducement) in the operation selection menu
+     * The mixedFractionOperation method performs the operation selected by the user and displays the result
+     * The first case is addition.
+     * The second case is subtraction.
+     * The third case is multiplication.
+     * The fourth case is division.
+     * The reducement operation is on the run method.
+     * Reducement is not on this method but exists as an else-if statement on the run method that is used by
+     * the program if the user selects the 5th option (reducement) in the operation selection menu
+     *
      * @param choice
      * @param fraction1 The first fraction involved in the operation
      * @param fraction2 The second fraction involved in the operation
