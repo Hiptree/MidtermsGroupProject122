@@ -1,9 +1,45 @@
 public class Tester {
+  private JFrame frame;
+  private JPanel buttonsPanel;
   private JButton calculateButton, clearButton, exitButton;
   private CalculateButtonHandler calculateButtonHandler;
   private ClearButtonHandler clearButtonHandler;
   private ExitButtonHandler exitButtonHandler;
 
+  public Tester() {
+        frame = new JFrame();
+
+        buttonsPanel = new JPanel();
+        buttonsPanel.setPreferredSize(new Dimension(300, 50));
+        buttonsPanel.setMaximumSize(buttonsPanel.getPreferredSize());
+        buttonsPanel.setLayout(new GridLayout(1, 3));
+
+        calculateButton = new JButton("Calculate");
+        calculateButtonHandler = new CalculateButtonHandler();
+        calculateButton.addActionListener(calculateButtonHandler);
+
+        clearButton = new JButton("Clear");
+        clearButtonHandler = new ClearButtonHandler();
+        clearButton.addActionListener(clearButtonHandler);
+
+        exitButton = new JButton("Exit");
+        exitButtonHandler = new ExitButtonHandler();
+        exitButton.addActionListener(exitButtonHandler);
+
+        buttonsPanel.add(calculateButton);
+        buttonsPanel.add(clearButton);
+        buttonsPanel.add(exitButton);
+
+        frame.add(buttonsPanel);
+
+        frame.setTitle("");
+        frame.pack(); // change this to setSize later on
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+  
   public class CalculateButtonHandler implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             try {
