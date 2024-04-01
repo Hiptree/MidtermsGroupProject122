@@ -1,3 +1,9 @@
+package mexer2.prog2.edu.slu;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 public class Tester {
   private JFrame frame;
   private JPanel buttonsPanel;
