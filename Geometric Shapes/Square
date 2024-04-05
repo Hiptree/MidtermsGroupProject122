@@ -1,0 +1,17 @@
+
+public class Square extends Shape {
+    private double side;
+
+    public Square (String name, double sides){
+        super(name);
+        side = sides;
+
+    }
+    public double area(){
+        double SquareArea = side * side;
+        return SquareArea;
+    }
+    public double Perimeter(){
+        return side *4;
+    }
+}
