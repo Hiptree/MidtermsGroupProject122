@@ -5,12 +5,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Tester {
-  private JFrame frame;
-  private JPanel buttonsPanel;
-  private JButton calculateButton, clearButton, exitButton;
-  private CalculateButtonHandler calculateButtonHandler;
-  private ClearButtonHandler clearButtonHandler;
-  private ExitButtonHandler exitButtonHandler;
+    private JFrame frame;
+    private JPanel dropdownPanel, inputsPanel, resultsPanel, buttonsPanel;
+    private JComboBox dropdown;
+    private JLabel nameOfShapeLabel, noShapeSelectedLabel, shapeDescription, areaLabel, perimeterLabel;
+    private JTextField nameofShapeTextField, areaTextField, perimeterTextField;
+    private JButton calculateButton, clearButton, exitButton;
+    private DropdownHandler dropdownHandler;
+    private ClearButtonHandler clearButtonHandler;
+    private CalculateButtonHandler calculateButtonHandler;
+    private ExitButtonHandler exitButtonHandler;
 
   public Tester() {
         frame = new JFrame();
@@ -39,7 +43,7 @@ public class Tester {
         frame.add(buttonsPanel);
 
         frame.setTitle("");
-        frame.pack(); // change this to setSize later on
+        frame.setSize(300, 440);
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.PAGE_AXIS));
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,18 +55,29 @@ public class Tester {
             try {
                 Shape shape = createShape((String) dropdown.getSelectedItem());
 
-                shapeDescription.setText(shape.toString());
-                areaTextField.setText(Double.toString(shape.area()));
-                perimeterTextField.setText(Double.toString(shape.perimeter()));
-            } catch (NumberFormatException nfe) {
+                if (shape.area() < 0 || shape.perimeter() < 0) {
+                    shapeDescription.setText("<html><p style='width: 200px; text-align: center;'>The area or perimeter " +
+                            "cannot be negative. Please input non-negative values only.</p></html>");
+                    clearTextFieldsInPanel(resultsPanel);
+                } else if (Double.isNaN(shape.area())) {
+                    if (shape instanceof Triangle) {
+                        shapeDescription.setText("<html><p p style='width: 200px; text-align: center;'>The sides do not " +
+                                "form a valid triangle. The sum of the lengths of any two sides must not be less than or " +
+                                "equal to the length of the third side.</p></html>");
+                        clearTextFieldsInPanel(resultsPanel);
+                    }
+                } else {
+                    shapeDescription.setText(shape.toString());
+                    areaTextField.setText(Double.toString(shape.area()));
+                    perimeterTextField.setText(Double.toString(shape.perimeter()));
+                }
+            } catch (NumberFormatException a) {
                 shapeDescription.setText("Please enter numbers only.");
                 clearTextFieldsInPanel(resultsPanel);
-            } catch (Exception exception) {
-                shapeDescription.setText("");
             }
         }
 
-        private Shape createShape(String selectedItem) throws NumberFormatException, Exception {
+        private Shape createShape(String selectedItem) throws NumberFormatException {
             if (selectedItem.equals("Circle")) {
                 double radius = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
                 return new Circle(nameofShapeTextField.getText(), radius);
@@ -79,7 +94,7 @@ public class Tester {
                 double side2 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 5));
                 return new Rectangle(nameofShapeTextField.getText(), side1, side2);
             } else {
-                throw new Exception();
+                throw null;
             }
         }
 
