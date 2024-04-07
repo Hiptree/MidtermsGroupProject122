@@ -50,7 +50,18 @@ public class Tester {
         frame.setVisible(true);
     }
   
-  public class CalculateButtonHandler implements ActionListener {
+  /**
+     * Handles the action event of the Calculate button.
+     *
+     * @author Mike Fajardo
+     */
+    public class CalculateButtonHandler implements ActionListener {
+        /**
+         * Creates the selected shape and calculates its area and perimeter.
+         * If the area or perimeter is negative, it displays an error message and clears the results.
+         * If the shape is a triangle and its sides do not form a valid triangle, it displays an error message and clears the results.
+         * Otherwise, it displays the shape's description, area, and perimeter.
+         */
         public void actionPerformed(ActionEvent e) {
             try {
                 Shape shape = createShape((String) dropdown.getSelectedItem());
@@ -77,6 +88,14 @@ public class Tester {
             }
         }
 
+        /**
+         * Creates a shape based on the selected item in the dropdown.
+         * It parses the text fields in the inputs panel to get the parameters for the shape.
+         * If the selected item is "Circle", it creates a Circle with the entered radius.
+         * If the selected item is "Triangle", it creates a Triangle with the entered sides.
+         * If the selected item is "Square", it creates a Square with the entered side.
+         * If the selected item is "Rectangle", it creates a Rectangle with the entered sides.
+         */
         private Shape createShape(String selectedItem) throws NumberFormatException {
             if (selectedItem.equals("Circle")) {
                 double radius = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
@@ -98,6 +117,11 @@ public class Tester {
             }
         }
 
+        /**
+         * This method gets the text from the text field at the specified index in the given panel.
+         * If the component at the index is a JTextField, it returns its text.
+         * Otherwise, it returns an empty string.
+         */
         private String getTextFromTextFieldAt(JPanel panel, int index) {
             if (panel.getComponent(index) instanceof JTextField) {
                 return ((JTextField) panel.getComponent(index)).getText();
@@ -106,7 +130,16 @@ public class Tester {
         }
     }
 
+    /**
+     * Handles the action event of the Clear button.
+     *
+     * @author Mike Fajardo
+     */
     public class ClearButtonHandler implements ActionListener {
+        /**
+         * Sets the text of the shape description to an empty string and
+         * clears the text fields in the inputs and results panels.
+         */
         public void actionPerformed(ActionEvent e) {
             shapeDescription.setText("");
 
@@ -115,12 +148,28 @@ public class Tester {
         }
     }
 
+    /**
+     * Handles the action event of the Exit button.
+     *
+     * @author Mike Fajardo
+     */
     public class ExitButtonHandler implements ActionListener {
+        /**
+         * Terminates the program when the exit button is clicked.
+         */
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }
     }
 
+    /**
+     * This method is used to clear the text fields in a given JPanel.
+     * It iterates over each component in the panel. If the component is a JTextField,
+     * it sets the text of the field to an empty string. If the component is a JPanel,
+     * it recursively calls itself to clear the text fields in the nested panel.
+     *
+     * @author Mike Fajardo
+     */
     public void clearTextFieldsInPanel(JPanel panel) {
         for (Component component : panel.getComponents()) {
             if (component instanceof JTextField) {
