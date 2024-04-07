@@ -50,7 +50,7 @@ public class Tester {
         frame.setVisible(true);
     }
   
-  /**
+    /**
      * Handles the action event of the Calculate button.
      *
      * @author Mike Fajardo
