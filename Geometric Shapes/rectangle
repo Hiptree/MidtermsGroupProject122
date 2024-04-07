@@ -1,0 +1,21 @@
+public class Rectangle extends Shape {
+    protected double length;
+    protected double width;
+
+    public Rectangle(String name, double length, double width) {
+        super(name);
+        this.length = length;
+        this.width = width;
+        sides = 4;
+    }
+
+    
+    public double area() {
+        return length * width;
+    }
+
+  
+    public double perimeter() {
+        return 2 * (length + width);
+    }
+}
