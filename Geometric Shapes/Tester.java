@@ -9,7 +9,7 @@ public class Tester {
     private JPanel dropdownPanel, inputsPanel, resultsPanel, buttonsPanel;
     private JComboBox dropdown;
     private JLabel nameOfShapeLabel, noShapeSelectedLabel, shapeDescription, areaLabel, perimeterLabel;
-    private JTextField nameofShapeTextField, areaTextField, perimeterTextField;
+    private JTextField nameOfShapeTextField, areaTextField, perimeterTextField;
     private JButton calculateButton, clearButton, exitButton;
     private DropdownHandler dropdownHandler;
     private ClearButtonHandler clearButtonHandler;
@@ -99,19 +99,19 @@ public class Tester {
         private Shape createShape(String selectedItem) throws NumberFormatException {
             if (selectedItem.equals("Circle")) {
                 double radius = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
-                return new Circle(nameofShapeTextField.getText(), radius);
+                return new Circle(nameOfShapeTextField.getText(), radius);
             } else if (selectedItem.equals("Triangle")) {
                 double side1 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
                 double side2 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 5));
                 double side3 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 7));
-                return new Triangle(nameofShapeTextField.getText(), side1, side2, side3);
+                return new Triangle(nameOfShapeTextField.getText(), side1, side2, side3);
             } else if (selectedItem.equals("Square")) {
                 double side = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
-                return new Square(nameofShapeTextField.getText(), side);
+                return new Square(nameOfShapeTextField.getText(), side);
             } else if (selectedItem.equals("Rectangle")) {
                 double side1 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 3));
                 double side2 = Double.parseDouble(getTextFromTextFieldAt(inputsPanel, 5));
-                return new Rectangle(nameofShapeTextField.getText(), side1, side2);
+                return new Rectangle(nameOfShapeTextField.getText(), side1, side2);
             } else {
                 throw null;
             }
