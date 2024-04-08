@@ -255,6 +255,8 @@ public class Tester {
          * If the area or perimeter is negative, it displays an error message and clears the results.
          * If the shape is a triangle and its sides do not form a valid triangle, it displays an error message and clears the results.
          * Otherwise, it displays the shape's description, area, and perimeter.
+         *
+         * @author Mike Fajardo
          */
         public void actionPerformed(ActionEvent e) {
             try {
