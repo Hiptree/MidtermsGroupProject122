@@ -1,7 +1,7 @@
 package mexer2.prog2.edu.slu;
 
 /**
- * @author
+ * @author Lance Cariage
  */
 public class Triangle extends Shape {
     private double side1;
