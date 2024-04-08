@@ -1,7 +1,7 @@
 package mexer2.prog2.edu.slu;
 
 /**
- * @author
+ * @author Ravone Ebeng
  */
 public class Rectangle extends Square {
     private double side2;
