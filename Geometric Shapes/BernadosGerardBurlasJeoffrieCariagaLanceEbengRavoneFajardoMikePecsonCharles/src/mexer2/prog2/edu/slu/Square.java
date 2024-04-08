@@ -1,7 +1,7 @@
 package mexer2.prog2.edu.slu;
 
 /**
- * @author
+ * @author Charles Pecson
  */
 public class Square extends Shape {
     private double side;
