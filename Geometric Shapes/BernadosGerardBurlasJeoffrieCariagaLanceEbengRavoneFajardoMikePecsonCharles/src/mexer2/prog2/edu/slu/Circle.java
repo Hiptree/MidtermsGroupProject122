@@ -1,7 +1,7 @@
 package mexer2.prog2.edu.slu;
 
 /**
- * @author
+ * @author Jeoffrie Burlas
  */
 public class Circle extends Shape {
     private double radius;
