@@ -119,7 +119,7 @@ public class Tester {
 
     /**
      * This method utilizes the JComboBox package of java.
-     * It allows the user the select shapes from the lists.
+     * It allows the user to select shapes from the lists.
      * The shape will then be read to display appropriate panels to execute the desired calculations.
      *
      * @author Gerard Bernados
