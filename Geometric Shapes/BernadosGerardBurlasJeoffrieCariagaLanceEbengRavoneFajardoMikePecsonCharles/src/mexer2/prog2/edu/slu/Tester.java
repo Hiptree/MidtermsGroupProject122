@@ -118,7 +118,9 @@ public class Tester {
     }
 
     /**
-     *
+     * This method utilizes the JComboBox package of java.
+     * It allows the user the select shapes from the lists.
+     * The shape will then be read to display appropriate panels to execute the desired calculations.
      *
      * @author Gerard Bernados
      */
@@ -149,7 +151,8 @@ public class Tester {
         }
 
         /**
-         *
+         * This method clears the panel while also allowing the panel to be filled again. 
+         * The following pre-defined methods allow the panel to be cleared and to be available for next use.
          *
          * @author Gerard Bernados
          */
@@ -160,7 +163,8 @@ public class Tester {
         }
 
         /**
-         *
+         * This method will allow the inputsPanel to be populated according to the inputs needed to calculate the area and perimeter of a circle.
+         * This will execute if the user will select the shape circle from the drop down list.
          *
          * @author Gerard Bernados
          */
@@ -179,7 +183,8 @@ public class Tester {
         }
 
         /**
-         *
+         * This method will allow the inputsPanel to be populated according to the inputs needed to calculate the area and perimeter of a triangle.
+         * This will execute if the user will select the shape triangle from the drop down list.
          *
          * @author Gerard Bernados
          */
@@ -202,7 +207,8 @@ public class Tester {
         }
 
         /**
-         *
+         * This method will allow the inputsPanel to be populated according to the inputs needed to calculate the area and perimeter of a square.
+         * This will execute if the user will select the shape square from the drop down list.
          *
          * @author Gerard Bernados
          */
@@ -221,7 +227,8 @@ public class Tester {
         }
 
         /**
-         *
+         * This method will allow the inputsPanel to be populated according to the inputs needed to calculate the area and perimeter of a rectangle.
+         * This will execute if the user will select the shape rectangle from the drop down list.
          *
          * @author Gerard Bernados
          */
