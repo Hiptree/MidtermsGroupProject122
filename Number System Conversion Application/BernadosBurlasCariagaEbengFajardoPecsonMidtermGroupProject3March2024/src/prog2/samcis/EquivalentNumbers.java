@@ -157,6 +157,81 @@ not by reusing the methods that are provided in existing Java classes. */
 
         return (result);
     }
+
+    /**
+     * Converts a decimal number to its octal representation.
+     *
+     * @param d The decimal number to be converted.
+     * @author Mike Fajardo
+     */
+    public static String toOctalString(double d) {
+        /*
+        Splits the given decimal into its whole number and
+        fractional parts.
+
+        The given decimal, when negative, can lead to incorrect
+        results to be incorrect if not handled. For instance,
+        the decimal number d is equal to -12.3. In this case:
+
+            decWholeNumPart would be -12
+            decFractionalPart would be -12.3 - (-12) = -0.3
+
+        As a result, neither part would be converted to their
+        octal representations because the while loops
+        require the parts to be positive.
+
+        To fix this, the absolute value of d is used. So:
+
+            decWholeNumPart becomes 12
+            decFractionalPart becomes 12.3 - 12 = 0.3
+
+        This way, both parts can be correctly converted to their
+        octal representations.
+         */
+        long decWholeNumPart = Math.abs((long) d);
+        double decFractionalPart = Math.abs(d) - decWholeNumPart;
+
+        /*
+        Converts the whole number part of the given decimal to
+        the whole number part of its octal representation.
+         */
+        StringBuilder octWholeNumPart = new StringBuilder();
+        while (decWholeNumPart > 0) {
+            int remainder = (int) (decWholeNumPart % 8);
+            decWholeNumPart /= 8;
+            octWholeNumPart.append(remainder);
+        }
+        octWholeNumPart.reverse();
+
+        /*
+        Converts the fractional part of the given decimal to the
+        fractional part of its octal representation.
+         */
+        StringBuilder octFractionalPart = new StringBuilder(".");
+        while (decFractionalPart > 0) {
+            decFractionalPart *= 8;
+            int digit = (int) decFractionalPart;
+            decFractionalPart -= digit;
+            octFractionalPart.append(digit);
+        }
+
+        /*
+        Combines the whole number and fractional parts of the octal
+        representation. If the given decimal does not have a
+        fractional part, its octal representation will only include
+        a whole number and no decimal point or any digits after it.
+         */
+        String octalString = (d % 1 == 0) ? "" + octWholeNumPart :
+                "" + octWholeNumPart + octFractionalPart;
+
+        /*
+        If the given decimal is negative, its octal representation
+        is returned with a negative sign. Otherwise, the octal
+        representation is returned as a positive number.
+         */
+        return (d < 0) ? "-" + octalString : octalString;
+    }
+
     /**
      *Returns the decimal number corresponding to a given octal number
      **/
