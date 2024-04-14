@@ -1,3 +1,11 @@
+/**
+     * This method converts decimal to hexadeimal.
+     * Since we utilized arrays in this method, it is better to have the return type void
+     * to easily print it already inside the method.
+     *
+     * @param decimal The decimal to be converted
+     * @author Gerard Bernados
+     */
 public static void decimalToHexadecimal(double decimal) {
 
             int wholeNumber = (int) decimal;
