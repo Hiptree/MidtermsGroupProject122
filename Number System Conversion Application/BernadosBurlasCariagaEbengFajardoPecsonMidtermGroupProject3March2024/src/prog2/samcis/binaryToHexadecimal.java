@@ -13,7 +13,12 @@ public String binaryToHexadecimal(String binary) {
     // Initializes an empty string to store the result
     String result = "";
 
-    // Pad the binary number with leading zeros to make its length a multiple of 4
+    /*Adds 0s in front of an incomplete 4-bit chunk so that each chunk can be divisible by 4. For example, a binary input of "101010" would be separated into
+    10 1010, but since the first two digits of "101010" are incomplete, 0s would be added in front of it to make it a 4-bit chunk to ensure that it can be converted
+    into a hexadecimal.
+    (i.e 101010 -> 10 1010 -> 0010 1010)
+    (i.e 1111111  -> 111 1111 -> 0111 1111)  
+    */
     while (binary.length() % 4 != 0) {
         binary = "0" + binary; 
     }
