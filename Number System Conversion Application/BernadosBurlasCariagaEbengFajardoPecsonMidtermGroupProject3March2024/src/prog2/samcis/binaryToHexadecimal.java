@@ -1,4 +1,4 @@
-/**
+/** 
  *
  * This method converts binary numbers into hexadecimal numbers by separating the binary number into 4-bit chunks (i.e 10001111 -> 1000 1111) and converts each
  *4-bit chunk into their corresponding hexadecimal equivalent before stringing them together to create the hexadecimal number. 
@@ -41,3 +41,44 @@ public String binaryToHexadecimal(String binary) {
     // Return the final hexadecimal representation
     return result;
 }
+
+
+/**
+ * Converts a hexadecimal string to its binary representation.
+ *
+ * @param hex The hexadecimal string to be converted.
+ * @return The binary representation of the hexadecimal string.
+ */
+public String hexadecimalToBinary(String hex) {
+    // Create a mapping of hexadecimal characters to their decimal values
+    String hexChars = "0123456789ABCDEF";
+
+    // Initialize the result as a StringBuilder 
+    StringBuilder result = new StringBuilder();
+
+    // Convert each character of the hexadecimal string
+    for (char c : hex.toCharArray()) {
+        // Convert the character to uppercase so that even if the inputed hexadecimal is in lowercase, it would be recognized properly.
+        char upperC = Character.toUpperCase(c);
+
+        // Find the decimal value of the character by searching in the hexadecimal character mapping
+        int decimalValue = hexChars.indexOf(upperC);
+
+        // Convert the decimal value to a 4-bit binary chunk
+        String binaryChunk = Integer.toBinaryString(decimalValue);
+
+        // Pad the binary chunk with leading zeros to ensure it has exactly 4 bits
+        while (binaryChunk.length() < 4) {
+            binaryChunk = "0" + binaryChunk; // Adding leading zeros
+        }
+
+        // Append the binary chunk to the result
+        result.append(binaryChunk);
+    }
+
+    // Return the complete binary representation
+    return result.toString();
+}
+
+
+
