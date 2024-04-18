@@ -1,10 +1,10 @@
 /**
-     * This method converts decimal to hexadeimal.
+     * This method converts hexadecimal to decimal
      *
      * @param hexadecimal The hexadecimal to be converted
      * @author Gerard Bernados
      */
-        public static double decimalToHexadecimal (String hexadecimal) {
+        public static double hexadecimalToDecimal (String hexadecimal) {
 
             //initialize the length of digits assuming that it has no fractional part
             int length = hexadecimal.length();
