@@ -164,7 +164,7 @@ not by reusing the methods that are provided in existing Java classes. */
      * @param d The decimal number to be converted.
      * @author Mike Fajardo
      */
-    public static String toOctalString(double d) {
+    public static String decimalToOctal(double d) {
         /*
         Splits the given decimal into its whole number and
         fractional parts.
